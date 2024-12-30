@@ -1,14 +1,17 @@
+const connection = require('../db.js')
+
 function existsId(req, res, next){
     const id =  req.params.id
-    const postId = posts.findIndex((el)=> el.id === parseInt(id) || el.slug === id)
+    const query = `
+    select * 
+    from characters
+    where id = ?`
 
-    if(postId === -1){
-        res.status(404)
-        return res.json({
-            error:"not found",
-            message:"non presente"
-        })
-    }
+    connection.query(query, id, (err, results)=>{
+        if(err){
+            return results.status(500).json({ error: 'Database query failed' });
+        }
+    })
 
     next();
 }
@@ -41,4 +44,4 @@ function checkInput(req, res, next){
     next()
 }
 
-module.exports = {existsId, checkInput, checkInputUpdate, checkVoid};
+module.exports = {existsId, checkInput, checkVoid};

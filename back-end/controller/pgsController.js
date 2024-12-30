@@ -67,11 +67,62 @@ function storeCT(req, res, next){
 }
 
 function update(req, res, next){
-    const {name, age, shadow, description} = req.body;  
+    const {name, age, shadow, description, id} = req.body;
+    const query = `
+    UPDATE characters
+    SET name = ?, age = ?, shadow = ?, description = ?
+    WHERE id=?;`
+
+    connection.query(query, [name, age, shadow, description, id], (err, results)=>{
+        if(err){
+            return results.status(500).json({ error: 'Database query failed' });
+        }
+        res.send("modifica andata a buon fine")
+    })
     next();
 }
 
-function modify(){}
+function modify(req, res, next){
+    const {name, age, shadow, description} = req.body;
+    const id = req.params.id;
+    const inputArray = []
+    let string = []
+    if(name){
+        inputArray.push(name)
+        string.push('name=?')
+    }
+    if(age){
+        inputArray.push(age)
+        string.push('age=?')
+    }
+    if(shadow){
+        inputArray.push(shadow)
+        string.push('shadow=?')
+    }
+    if(description){
+        inputArray.push(description)
+        string.push('description=?')
+    }
+    if(id){
+        inputArray.push(id)
+    }
+    
+    string = string.join(',')
+
+
+    const query = inputArray.length>0 ?`
+    UPDATE characters
+    SET ${string}
+    WHERE id=?;` : ` `
+
+    connection.query(query, inputArray, (err, results)=>{
+        if(err){
+            return results.status(500).json({ error: 'Database query failed' });
+        }
+        res.send("modifica andata a buon fine")
+    })
+    next();
+}
 
 function destroy(req, res, next){
     const id = req.params.id;
@@ -88,4 +139,4 @@ function destroy(req, res, next){
     next();
 }
 
-module.exports = {show, index, destroy, store, storeCT}
+module.exports = {show, index, destroy, store, storeCT, update, modify}

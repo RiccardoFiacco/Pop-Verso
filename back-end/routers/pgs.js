@@ -19,13 +19,13 @@ router.post('/',checkVoid, checkInput, pgsController.store, pgsController.storeC
 })
 
 //update
-router.put('/:id', checkVoid, checkInput, existsId,(req, res)=>{ 
-    res.send(" update pg id "+req.params.id)
+router.put('/:id', checkVoid, checkInput, existsId, pgsController.update, ()=>{ 
+    console.log("fine della update") 
 })
 
 //modify
-router.patch('/:id', checkVoid, existsId,(req, res)=>{ 
-    res.send(" modify pg id "+req.params.id)
+router.patch('/:id', checkVoid, existsId, pgsController.modify, ()=>{ 
+    console.log("fine della modify") 
 })
 
 //destroy
