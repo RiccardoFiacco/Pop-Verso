@@ -65,6 +65,14 @@ function storeCT(req, res, next){
     console.log("store della tabella ponte")
     next();
 }
+
+function update(req, res, next){
+    const {name, age, shadow, description} = req.body;  
+    next();
+}
+
+function modify(){}
+
 function destroy(req, res, next){
     const id = req.params.id;
     const query = `delete 
