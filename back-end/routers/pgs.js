@@ -13,8 +13,8 @@ router.get('/:id', pgsController.show, ()=>{
 })
 
 //store
-router.post('/',(req, res)=>{ 
-    res.send("store pgs")
+router.post('/',pgsController.store, pgsController.storeCT,()=>{
+    console.log("fine della store") 
 })
 
 //update
