@@ -59,4 +59,4 @@ function checkInput(req, res, next){
     next()
 }
 
-module.exports = {existsIdCharacter, checkInput, checkVoid};
+module.exports = {existsIdCharacter, existsIdTeams, checkInput, checkVoid};
