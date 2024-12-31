@@ -10,7 +10,29 @@ function index(req, res, next){
         if(err){
             return results.status(500).json({ error: 'Database query failed' })
         }
-        res.json(results)
+        let finalArr = []
+
+        results.forEach(row=>{
+            let ogg = {
+                id:row['id'],
+                name: row['name'],
+                age: row['age'],
+                shadow: row['shadow'],
+                description: row['description'],
+                team_id: [row['team_id']],
+                is_spy: row['is_spy']
+            }
+
+            //mi ritorno la prima occorrenza che matcha con il filtro    
+            let existingCharacter = finalArr.find(post => post.id === ogg.id);
+            if(existingCharacter){
+                existingCharacter.team_id.push(row['team_id'])
+            } else {
+                finalArr.push(ogg)
+            }
+        })
+
+        res.json(finalArr)
     })
     next();
 }
