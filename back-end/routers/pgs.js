@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const pgsController = require('../controller/pgsController.js');
-const { existsId, checkInput, checkVoid, checkInputUpdate } = require('../middleware/utils.js');
+const { existsIdCharacter, checkInput, checkVoid, checkInputUpdate } = require('../middleware/utils.js');
 
 //index
 router.get('/', pgsController.index, ()=>{ 
@@ -9,7 +9,7 @@ router.get('/', pgsController.index, ()=>{
 })
 
 //show
-router.get('/:id', existsId, pgsController.show, ()=>{
+router.get('/:id', existsIdCharacter, pgsController.show, ()=>{
     console.log("finita la show");
 })
 
@@ -19,17 +19,17 @@ router.post('/',checkVoid, checkInput, pgsController.store, pgsController.storeC
 })
 
 //update
-router.put('/:id', checkVoid, checkInput, existsId, pgsController.update, ()=>{ 
+router.put('/:id', checkVoid, existsIdCharacter, checkInput,  pgsController.update, ()=>{ 
     console.log("fine della update") 
 })
 
 //modify
-router.patch('/:id', checkVoid, existsId, pgsController.modify, ()=>{ 
+router.patch('/:id', checkVoid, existsIdCharacter, pgsController.modify, ()=>{ 
     console.log("fine della modify") 
 })
 
 //destroy
-router.delete('/:id', existsId, pgsController.destroy, (req, res)=>{ 
+router.delete('/:id', existsIdCharacter, pgsController.destroy, (req, res)=>{ 
     console.log("finita la delete");
 })
 module.exports = router
