@@ -1,10 +1,26 @@
 const connection = require('../db.js')
 
-function existsId(req, res, next){
+function existsIdCharacter(req, res, next){
     const id =  req.params.id
     const query = `
     select * 
     from characters
+    where id = ?`
+
+    connection.query(query, id, (err, results)=>{
+        if(err){
+            return results.status(500).json({ error: 'Database query failed' });
+        }
+    })
+
+    next();
+}
+
+function existsIdTeams(req, res, next){
+    const id =  req.params.id
+    const query = `
+    select * 
+    from teams
     where id = ?`
 
     connection.query(query, id, (err, results)=>{
@@ -26,13 +42,12 @@ function checkVoid (req, res, next){
 
 function checkInput(req, res, next){
 
-    const {title, slug, content, image, tags} = req.body;
+    const {name, age, shadow, description} = req.body;
     let error = [];
-    if(!title){ error.push("name non presente") } 
-    if(!slug){ error.push("slug non presente") }
-    if(!content){ error.push(" content non presente") } 
-    if(!image){ error.push("image non presente") }
-    if(!tags){ error.push("tags non presente") }
+    if(!name){ error.push("name non presente") } 
+    if(!age){ error.push("age non presente") }
+    if(!shadow){ error.push(" shadow non presente") } 
+    if(!description){ error.push("description non presente") }
     if(error.length > 0){
         res.status(403)
         return res.json({
@@ -44,4 +59,4 @@ function checkInput(req, res, next){
     next()
 }
 
-module.exports = {existsId, checkInput, checkVoid};
+module.exports = {existsIdCharacter, checkInput, checkVoid};
