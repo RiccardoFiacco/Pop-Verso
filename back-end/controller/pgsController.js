@@ -110,10 +110,12 @@ function modify(req, res, next){
     string = string.join(',')
 
 
-    const query = inputArray.length>0 ?`
-    UPDATE characters
+    const query = inputArray.length>0 ?
+    `UPDATE characters
     SET ${string}
-    WHERE id=?;` : ` `
+    WHERE id=?;` 
+    : 
+    ` `
 
     connection.query(query, inputArray, (err, results)=>{
         if(err){
