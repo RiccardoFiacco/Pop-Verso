@@ -4,14 +4,12 @@
     color: orange;
 }
 
-.row{
-    display: flex;
-    justify-content: space-around;
-}
-
 .text{
-    font-size: larger;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 20px;
+}
+
+.mt_auto{
+    margin-top: auto;
 }
