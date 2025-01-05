@@ -2,7 +2,8 @@ import { NavLink } from "react-router"
 import style from './Navigation.module.css'
 export function Navigation(){
     return(
-        <div className="row">
+        <div className="container">
+         <div className="row">
             <div className="col">
              <NavLink className={`${style.none}`} to="/">Home</NavLink>
             </div>
@@ -12,6 +13,7 @@ export function Navigation(){
             <div className="col">
              <NavLink className={`${style.none}`} to="/teams">teams</NavLink>
             </div>
+         </div>
         </div>
     )
 }
