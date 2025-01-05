@@ -1,0 +1,16 @@
+.background{
+    width: 100%;
+    background-color: black;
+    color: orange;
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+
+.text{
+    font-size: larger;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

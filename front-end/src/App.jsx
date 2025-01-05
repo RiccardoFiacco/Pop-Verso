@@ -1,16 +1,16 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { DefaultLayout } from './components/DefaultLayout'
-
+import { Home } from './pages/Home'
 function App() {
   
 
   return (
     <BrowserRouter>
-      <Routes Component={DefaultLayout}>
-        <Route>
-          
-        </Route>
+      <Routes>
+        <Route Component={DefaultLayout}>
+         <Route index Component={Home}/> 
+        </Route>   
       </Routes>
     </BrowserRouter>
   )
