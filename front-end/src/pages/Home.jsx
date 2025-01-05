@@ -7,7 +7,6 @@ export function Home(){
                     Scopri i gruppi e i personaggi che ne fanno parte
                 </div>
             </div>
-    
         </div>
     )
 }
