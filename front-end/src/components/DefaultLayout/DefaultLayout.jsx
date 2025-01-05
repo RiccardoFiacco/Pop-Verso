@@ -7,7 +7,7 @@ export function DefaultLayout(){
         <div className={`row ${style.vh100}`}>
          <Header/>      
          <Outlet/>  
-         <Footer/>
+         <Footer/> 
         </div>
     )
 }

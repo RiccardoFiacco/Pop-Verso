@@ -1,15 +1,15 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Card } from '../components/Card/Card.jsx'
-export function Pgs(){
-    const [pgs, setPgs] = useState([]);
-    const baseUrl = `http://localhost:3000/pgs`
+export function Teams(){
+    const [teams, setTeams] = useState([]);
+    const baseUrl = `http://localhost:3000/teams`
 
     useEffect(()=>{
      axios
      .get(baseUrl)
      .then((res)=>{
-        setPgs(res.data)   
+        setTeams(res.data)   
      })
      .catch((err)=>console.log(err))
     },[])
@@ -19,20 +19,20 @@ export function Pgs(){
      <div className="container">
         <div className="row">
          <div className="col">
-             <h1>TUTTI I PERSONAGGI DI POP-VERSO</h1>
+             <h1>TUTTI I TEAM DI POP-VERSO</h1>
          </div>
         </div>
         <div className="row">
          <div className="col">
             <div className="row">
-                {pgs ?
-                pgs.map((el, i)=>{
+                {teams ?
+                teams.map((el, i)=>{
                  return(
                   <div className="col" key={i}>
                     <Card obj={el}/>
                   </div> 
                  )
-                }) : <p>non ci sono personaggi</p>}
+                }) : <p>non ci sono team</p>}
             </div>
          </div>
         </div>
