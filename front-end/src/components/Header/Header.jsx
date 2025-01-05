@@ -1,5 +1,5 @@
 import style from './Header.module.css'
-
+import { Navigation } from '../Nav/Navigation'
 export function Header(){
     return(
         <header>
