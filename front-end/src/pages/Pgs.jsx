@@ -18,18 +18,18 @@ export function Pgs(){
     
     return(
     
-     <div className="container ps-5">
+     <div className="container">
         <div className="row pb-5">
          <div className="col">
              <h1>TUTTI I PERSONAGGI DI POP-VERSO</h1>
          </div>
-         <div className="col">
-            <Link to='/team/add' className="btn btn-warning"> aggiungi un nuovo personaggio</Link>
+         <div className="col-3">
+            <Link to='/pgs/add' className="btn btn-warning"> aggiungi un nuovo personaggio</Link>
          </div>
         </div>
-        <div className="row">
+        <div className="row ">
          <div className="col">
-            <div className="row">
+            <div className="row row-gap-4">
                 {pgs ?
                 pgs.map((el, i)=>{
                  return(

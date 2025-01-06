@@ -17,18 +17,18 @@ export function Teams(){
     
     return(
     
-     <div className="container ps-5">
-        <div className="row pb-5 ">
+     <div className="container">
+        <div className="row pb-5">
          <div className="col">
              <h1>TUTTI I TEAM DI POP-VERSO</h1>
          </div>
-         <div className="col">
+         <div className="col-3">
             <Link to='/team/add' className="btn btn-warning"> aggiungi un nuovo team</Link>
          </div>
         </div>
         <div className="row">
          <div className="col">
-            <div className="row">
+            <div className="row row-gap-4">
                 {teams ?
                 teams.map((el, i)=>{
                  return(

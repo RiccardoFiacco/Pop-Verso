@@ -5,8 +5,10 @@ import style from './DefaultLayout.module.css'
 export function DefaultLayout(){
     return(
         <div className={`row ${style.vh100}`}>
-         <Header/>      
-         <Outlet/>  
+         <Header/>  
+         <div className="container">   
+            <Outlet/>  
+         </div> 
          <Footer/> 
         </div>
     )
