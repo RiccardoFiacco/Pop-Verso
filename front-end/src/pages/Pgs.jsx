@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Card } from '../components/Card/Card.jsx'
+import { Link } from "react-router";
+
 export function Pgs(){
     const [pgs, setPgs] = useState([]);
     const baseUrl = `http://localhost:3000/pgs`
@@ -12,7 +14,7 @@ export function Pgs(){
         setPgs(res.data)   
      })
      .catch((err)=>console.log(err))
-    },[])
+    },[baseUrl])
     
     return(
     
@@ -20,6 +22,9 @@ export function Pgs(){
         <div className="row">
          <div className="col">
              <h1>TUTTI I PERSONAGGI DI POP-VERSO</h1>
+         </div>
+         <div className="col">
+            <Link to='/team/add' className="btn btn-warning"> aggiungi un nuovo personaggio</Link>
          </div>
         </div>
         <div className="row">

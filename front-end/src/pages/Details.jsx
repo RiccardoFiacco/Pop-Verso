@@ -15,7 +15,7 @@ export function Details(){
         setElement(res.data[0])   
      })
      .catch((err)=>console.log(err))
-    },[])
+    },[baseUrl])
     
     return(
     <div className="container text-center">
