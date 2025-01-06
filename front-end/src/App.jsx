@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { Pgs } from './pages/Pgs'
 import { Teams } from './pages/Teams'
 import { Details } from './pages/Details'
+import { Add } from './pages/Add'
 function App() {
   
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/pgs' Component={Pgs}/> 
           <Route path='/teams' Component={Teams}/> 
           <Route path="/:type/:id" Component={Details}/>
+          <Route path="/:type/add" Component={Add}/>
         </Route>  
       </Routes>
     </BrowserRouter>
